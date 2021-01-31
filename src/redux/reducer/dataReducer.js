@@ -7,6 +7,8 @@ export function dataReducer(state, action) {
         ...state,
         data: action.payload,
       };
+
+      default:
+        return state;
   }
-  return state;
 }
