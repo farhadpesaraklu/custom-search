@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 
 export default function SearchInput({ handleGetResult }) {
@@ -12,6 +12,12 @@ export default function SearchInput({ handleGetResult }) {
       handleGetResult("");
     }
   }
+  
+  const searchInput = useRef();
+
+  useEffect(() => {
+    searchInput.current.focus();
+  });
 
   return (
     <Form>
@@ -20,6 +26,7 @@ export default function SearchInput({ handleGetResult }) {
           placeholder="Please Search Something..."
           value={keyword}
           onChange={handleInputChange}
+          ref={searchInput}
         />
       </Form.Group>
     </Form>
