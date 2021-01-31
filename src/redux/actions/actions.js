@@ -8,14 +8,14 @@ function actionCreator(type, payload) {
   };
 }
 
-export const getDatas = (data) => actionCreator(GET_DATA, data);
+export const getDataAction = (data) => actionCreator(GET_DATA, data);
 
-export const getDataQuery = () => {
+export const getDataQuery = (keyword) => {
   return async (dispatch) => {
     return new Promise(async (resolve, reject) => {
-      getData()
+      getData(keyword)
         .then((res) => {
-          dispatch(getDatas(res));
+          dispatch(getDataAction(res));
           return resolve(res);
         })
         .catch((err) => {
